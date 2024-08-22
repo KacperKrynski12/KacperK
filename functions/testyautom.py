@@ -26,7 +26,23 @@ login_button = driver.find_element(By.XPATH,"//input[@id='login-button']")
 login_button.click()
 product_label = driver.find_element(By.XPATH, "//span[@class='title']")
 assert product_label.text == "Products"
-time.sleep(2)
+addingtocart = driver.find_elements(By.XPATH, "//button[contains(@class, 'btn_inventory')]")
+for addingto2cart in addingtocart:
+    addingto2cart.click()
+goingtocart = driver.find_element(By.XPATH,"//a[@data-test='shopping-cart-link']")
+goingtocart.click()
+time.sleep(4)
+checkingifallitemshavebeenadded = driver.find_elements(By.XPATH, "//div[@data-test='inventory-item']")
+assert len(checkingifallitemshavebeenadded)==6
+
+
+
+
+
+
+
+driver.quit()
+
 
 
 # //a[@class='shopping_cart_link']
